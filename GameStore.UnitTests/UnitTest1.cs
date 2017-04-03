@@ -110,5 +110,36 @@ namespace GameStore.UnitTests
             Assert.AreEqual(result[1], "Cat2");
             Assert.AreEqual(result[2], "Cat3");
         }
+
+        [TestMethod]
+        public void Indicates_Selected_Category()
+        {
+            Mock<IGameRepository> mock = getGameMock();
+            NavController controller = new NavController(mock.Object);
+            string category = "Cat1";
+
+            string result = controller.Menu(category).ViewBag.SelectedCategory;
+
+            Assert.AreEqual(category, result);
+        }
+
+        [TestMethod]
+        public void Generate_Category_Specific_Game_Count()
+        {
+            Mock<IGameRepository> mock = getGameMock();
+            GameController controller = new GameController(mock.Object);
+            controller.pageSize = 3;
+
+            int res1 = ((GamesListViewModel)controller.List("Cat1").Model).PagingInfo.TotalItems;
+            int res2 = ((GamesListViewModel)controller.List("Cat2").Model).PagingInfo.TotalItems;
+            int res3 = ((GamesListViewModel)controller.List("Cat3").Model).PagingInfo.TotalItems;
+            int resAll = ((GamesListViewModel)controller.List(null).Model).PagingInfo.TotalItems;
+
+            Assert.AreEqual(res1, 2);
+            Assert.AreEqual(res2, 2);
+            Assert.AreEqual(res3, 1);
+            Assert.AreEqual(resAll, 5);
+        }
+
     }
 }
