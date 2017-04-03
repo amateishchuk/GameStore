@@ -20,11 +20,11 @@ namespace GameStore.UnitTests
         {
             Mock<IGameRepository> mock = new Mock<IGameRepository>();
             mock.Setup(m => m.Games).Returns(new[] {
-                new Game { GameId = 1, Name = "Game 1", Price = 10 },
-                new Game { GameId = 2, Name = "Game 2", Price = 10 },
-                new Game { GameId = 3, Name = "Game 3", Price = 10 },
-                new Game { GameId = 4, Name = "Game 4", Price = 10 },
-                new Game { GameId = 5, Name = "Game 5", Price = 10 }
+                new Game { GameId = 1, Name = "Game 1", Price = 10, Category = "Cat1" },
+                new Game { GameId = 2, Name = "Game 2", Price = 10, Category = "Cat2" },
+                new Game { GameId = 3, Name = "Game 3", Price = 10, Category = "Cat1" },
+                new Game { GameId = 4, Name = "Game 4", Price = 10, Category = "Cat2" },
+                new Game { GameId = 5, Name = "Game 5", Price = 10, Category = "Cat3" }
             });
             return mock;
         }
@@ -37,7 +37,7 @@ namespace GameStore.UnitTests
             GameController controller = new GameController(mock.Object);
             controller.pageSize = 3;
 
-            GamesListViewModel result = (GamesListViewModel)controller.List(2).Model;
+            GamesListViewModel result = (GamesListViewModel)controller.List(null, 2).Model;
             
             List<Game> games = result.Games.ToList();
 
@@ -76,13 +76,39 @@ namespace GameStore.UnitTests
             GameController controller = new GameController(mock.Object);
             controller.pageSize = 3;
 
-            GamesListViewModel result = (GamesListViewModel)controller.List(2).Model;
+            GamesListViewModel result = (GamesListViewModel)controller.List(null, 2).Model;
 
-            PagingInfo pagingInfo = result.pagingInfo;
+            PagingInfo pagingInfo = result.PagingInfo;
             Assert.AreEqual(2, pagingInfo.CurrentPage);
             Assert.AreEqual(3, pagingInfo.ItemsPerPage);
             Assert.AreEqual(5, pagingInfo.TotalItems);
             Assert.AreEqual(2, pagingInfo.TotalPages);
+        }
+
+        [TestMethod]
+        public void Can_Filter_Games()
+        {
+            Mock<IGameRepository> mock = getGameMock();
+            GameController controller = new GameController(mock.Object);
+            controller.pageSize = 3;
+
+            List<Game> result = ((GamesListViewModel)(controller.List("Cat2", 1).Model)).Games.ToList();
+
+            Assert.AreEqual(2, result.Count());
+            Assert.IsTrue(result[0].Name == "Game 2" && result[0].Category == "Cat2");
+            Assert.IsTrue(result[1].Name == "Game 4" && result[1].Category == "Cat2");
+        }
+
+        [TestMethod]
+        public void Can_Create_Categories()
+        {
+            Mock<IGameRepository> mock = getGameMock();
+            NavController controller = new NavController(mock.Object);
+            List<string> result = ((IEnumerable<string>)controller.Menu().Model).ToList();
+
+            Assert.AreEqual(result[0], "Cat1");
+            Assert.AreEqual(result[1], "Cat2");
+            Assert.AreEqual(result[2], "Cat3");
         }
     }
 }
