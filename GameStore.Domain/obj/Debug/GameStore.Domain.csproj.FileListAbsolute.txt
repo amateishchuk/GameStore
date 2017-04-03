@@ -21,3 +21,26 @@ E:\Projects\GameStore\GameStore.Domain\bin\Debug\EntityFramework.dll
 E:\Projects\GameStore\GameStore.Domain\bin\Debug\EntityFramework.SqlServer.dll
 E:\Projects\GameStore\GameStore.Domain\bin\Debug\EntityFramework.xml
 E:\Projects\GameStore\GameStore.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\GameStore.Domain.dll.config
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\GameStore.Domain.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\GameStore.Domain.pdb
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\EntityFramework.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.Helpers.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.Mvc.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.Razor.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.WebPages.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\EntityFramework.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.Helpers.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.Mvc.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.Razor.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.WebPages.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\obj\Debug\GameStore.Domain.csprojResolveAssemblyReference.cache
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\obj\Debug\GameStore.Domain.dll
+C:\Users\User 7\Desktop\GameStore\GameStore\GameStore.Domain\obj\Debug\GameStore.Domain.pdb

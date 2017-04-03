@@ -4,21 +4,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
     public class GameController : Controller
     {
-        IGameRepository repository;
+        private IGameRepository repository;
+
+        public int pageSize = 4;
 
         public GameController(IGameRepository repo)
         {
             repository = repo;
         }
 
-        public ActionResult List()
+        public ViewResult List(int page = 1)
         {
-            return View(repository.Games);
+            GamesListViewModel viewModel = new GamesListViewModel
+            {
+                Games = repository.Games
+                    .OrderBy(g => g.GameId)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize),
+                pagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                    TotalItems = repository.Games.Count()
+                }
+            };
+            return View(viewModel);
         }
     }
 }
