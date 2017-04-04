@@ -16,7 +16,7 @@ namespace GameStore.UnitTests
     public class UnitTest1
     {
          
-        public Mock<IGameRepository> getGameMock()
+        Mock<IGameRepository> getGameMock()
         {
             Mock<IGameRepository> mock = new Mock<IGameRepository>();
             mock.Setup(m => m.Games).Returns(new[] {
