@@ -10,12 +10,13 @@
 <body>
     <div class="navbar navbar-inverse" role="navigation">
         <a class="navbar-brand" href="#">GameStore - computer games store</a>
+        @Html.Action("Summary", "Cart")
     </div>
     <div class="row panel">
-        <div id="categories" class="col-xs-3">
+        <div id="categories" class="col-md-1 col-md-offset-1">
             @Html.Action("Menu", "Nav")
         </div>
-        <div class="col-xs-8">
+        <div class="col-md-8 col-md-offset-1">
             @RenderBody()
         </div>
     </div>

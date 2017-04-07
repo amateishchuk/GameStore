@@ -141,5 +141,45 @@ namespace GameStore.UnitTests
             Assert.AreEqual(resAll, 5);
         }
 
+        [TestMethod]
+        public void Can_Add_To_Cart()
+        {
+            Mock<IGameRepository> mock = new Mock<IGameRepository>();
+            mock.Setup(g => g.Games).Returns(new List<Game> {
+                new Game {
+                    GameId = 1, Name = "Game 1", Price = 100, Category = "Cat1"
+                }
+            }.AsQueryable());
+
+
+            Cart cart = new Cart();
+
+            CartController controller = new CartController(mock.Object);
+            controller.AddToCart(cart, 1, null);
+
+            Assert.AreEqual(cart.Lines.Count(), 1);
+            Assert.AreEqual(cart.Lines.ToList()[0].Game.GameId, 1);
+        }
+
+        [TestMethod]
+        public void Adding_Game_To_Cart_Goes_To_Cart_Screen()
+        {
+            Mock<IGameRepository> mock = new Mock<IGameRepository>();
+            mock.Setup(g => g.Games).Returns(new List<Game> {
+                new Game {
+                    GameId = 1, Name = "Game 1", Price = 100, Category = "Cat1"
+                }
+            }.AsQueryable());
+
+
+            Cart cart = new Cart();
+
+            CartController controller = new CartController(mock.Object);
+            RedirectToRouteResult result = controller.AddToCart(cart, 1, "myUrl");
+
+            Assert.AreEqual(result.RouteValues["action"], "Index");
+            Assert.AreEqual(result.RouteValues["returnUrl"], "myUrl");
+            
+        }
     }
 }
